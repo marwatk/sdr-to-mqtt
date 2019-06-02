@@ -11,11 +11,11 @@ sleep 1
 {{ go_path }}/bin/rtlamr \
         -duration={{ rtlamr_seconds_to_run }}s \
         -filterid={{ rtlamr_meter_id }} \
-        2>/dev/null | \
-    stdbuf -oL uniq --skip-chars=31 | \
+        | \
+    stdbuf -o0 uniq --skip-chars=31 | \
     mosquitto_pub \
             --stdin-line \
-            --topic /sensors/power/meter \
+            --topic sensors/power/meter \
             --host "{{ mqtt_server }}" \
             --port "{{ mqtt_port }}" \
             --pw "{{ mqtt_pass }}" \

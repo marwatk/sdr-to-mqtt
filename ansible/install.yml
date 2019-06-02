@@ -4,7 +4,11 @@
   - name: Configure pi
     include_role:
       name: pi-sd-saver
-  
+
+  - name: Install mosquitto-clients
+    include_role:
+      name: mosquitto-client
+
   - name: Install rtl-sdr
     include_role:
       name: rtl-sdr

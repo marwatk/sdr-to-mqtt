@@ -10,10 +10,6 @@
   args:
     creates: "{{ go_path }}/bin/rtlamr"
 
-- name: Install mosquitto-clients
-  package:
-    name: mosquitto-clients
-
 - name: Create run shell script
   template:
     dest: /root/run_amr.sh

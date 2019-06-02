@@ -32,10 +32,6 @@
   args:
     creates: /usr/local/bin/rtl_433
 
-- name: Install mosquitto-clients
-  package:
-    name: mosquitto-clients
-
 - name: Create run shell script
   template:
     dest: /root/run_433.sh

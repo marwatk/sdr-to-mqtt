@@ -1,0 +1,23 @@
+# The mosquitto client that comes with raspbian has a bug when presented with no input:
+#  https://github.com/eclipse/mosquitto/issues/676
+# This bug apparently affects 1.6.2 as well:
+#  https://github.com/eclipse/mosquitto/issues/676#issuecomment-498067131
+
+
+- name: Install mosquitto apt-key
+  apt_key:
+    url: http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
+    state: present
+
+- name: Install mosquitto repo
+  apt_repository:
+    repo: deb http://repo.mosquitto.org/debian stretch main
+    update_cache: yes
+
+- name: Install mosquitto-clients
+  apt:
+    name: 
+    - mosquitto-clients={{ mosquitto_version }}
+    - libmosquitto1={{ mosquitto_version }}
+    state: present
+

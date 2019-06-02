@@ -15,6 +15,8 @@ fi
 echo $$ > "$pidfile"
 
 while true; do
-  ./run_433.sh
-  ./run_amr.sh
+  ./run_433.sh 2>/var/log/433.log
+  sleep 1
+  ./run_amr.sh 2>/var/log/amr.log
+  sleep 1
 done

@@ -9,12 +9,13 @@ killall rtl_433 >/dev/null 2>&1 || true
         -T {{ rtl_433_seconds_to_run | default( 60 ) }} \
         -G \
         -M time:iso \
+        -M newmodel \
         -F json \
-        2>/dev/null | \
-    stdbuf -oL uniq --skip-chars=31 | \
+        | \
+    stdbuf -o0 uniq --skip-chars=31 | \
     mosquitto_pub \
             --stdin-line \
-            --topic /sensors/433_raw \
+            --topic sensors/433_raw \
             --host {{ mqtt_server }} \
             --port {{ mqtt_port }} \
             --pw {{ mqtt_pass }} \
