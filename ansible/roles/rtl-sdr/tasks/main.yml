@@ -1,0 +1,12 @@
+# https://www.rtl-sdr.com/rtl-sdr-quick-start-guide/ (Scroll down to linux section)
+- name: Blacklist dvb module
+  lineinfile:
+    path: /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
+    line: blacklist dvb_usb_rtl28xxu
+    regexp: blacklist dvb_usb_rtl28xxu
+  
+- name: Install rtl-sdr packages
+  package:
+    name: rtl-sdr
+    state: present
+  

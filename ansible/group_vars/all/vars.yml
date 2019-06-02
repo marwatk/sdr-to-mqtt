@@ -1,0 +1,7 @@
+rtl_433_seconds_to_run: 15
+rtlamr_seconds_to_run: 45
+rtlamr_meter_id: 60365960
+mqtt_server: "{{ vault_mqtt_server }}"
+mqtt_user: "{{ vault_mqtt_user }}"
+mqtt_pass: "{{ vault_mqtt_pass }}"
+mqtt_port: "{{ vault_mqtt_port }}"

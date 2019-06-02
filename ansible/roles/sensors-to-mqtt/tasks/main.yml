@@ -1,0 +1,15 @@
+
+
+- name: Deploy run file
+  template:
+    dest: /root/sdr_loop.sh
+    mode: "0755"
+    src: resources/sdr_loop.sh
+
+- name: Add loop to crontab
+  cron:
+    name: "Run sdr loop"
+    minute: "*/2"
+    job: "/root/sdr_loop.sh >/dev/null 2>&1"
+    user: root
+    cron_file: /etc/crontab

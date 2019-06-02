@@ -1,0 +1,16 @@
+- name: Turn off current swap
+  command: /sbin/swapoff --all
+
+- name: Disable future swap
+  systemd:
+    name: dphys-swapfile
+    state: stopped
+    enabled: no
+
+- name: Mount /var/log as temp
+  mount:
+    path: /var/log
+    src: tmpfs
+    fstype: tmpfs
+    opts: nosuid,noexec,size={{ log_fs_size }}
+    state: present

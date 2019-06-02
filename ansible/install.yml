@@ -1,0 +1,22 @@
+- hosts: softwareradio
+  tasks:
+
+  - name: Configure pi
+    include_role:
+      name: pi-sd-saver
+  
+  - name: Install rtl-sdr
+    include_role:
+      name: rtl-sdr
+  
+  - name: Install rtl_433
+    include_role:
+      name: rtl_433
+  
+  - name: Install rtlamr
+    include_role:
+      name: rtlamr  
+
+  - name: Install loop role
+    include_role:
+      name: sensors-to-mqtt  

@@ -1,0 +1,21 @@
+- name: Install golang
+  package:
+    name: golang
+
+# I couldn't make the arm binary work on a rpi
+- name: Go get rtlamr
+  shell: go get github.com/bemasher/rtlamr
+  environment:
+    GOPATH: "{{ go_path }}"
+  args:
+    creates: "{{ go_path }}/bin/rtlamr"
+
+- name: Install mosquitto-clients
+  package:
+    name: mosquitto-clients
+
+- name: Create run shell script
+  template:
+    dest: /root/run_amr.sh
+    mode: "0755"
+    src: resources/run_amr.sh
